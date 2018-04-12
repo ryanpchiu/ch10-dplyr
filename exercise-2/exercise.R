@@ -3,27 +3,29 @@
 # performed using `dplyr` (do not directly access or manipulate the data frames)
 
 # Install and load the "fueleconomy" package
-#install.packages("devtools")
+install.packages("devtools")
 #devtools::install_github("hadley/fueleconomy")
 library(fueleconomy)
 
 # Install and load the "dplyr" library
-
+install.packages("dpylr")
+library("dplyr")
 
 # Select the different manufacturers (makes) of the cars in this data set. 
 # Save this vector in a variable
-
-
+makes <- select(vehicles, make)
 # Use the `distinct()` function to determine how many different car manufacturers
 # are represented by the data set
-
+nrow(distinct(vehicles, make))
 
 # Filter the data set for vehicles manufactured in 1997
+cars_1997 <- filter(vehicles, year==1997)
 
 
 # Arrange the 1997 cars by highway (`hwy`) gas milage
+cars_1997_hwy <- arrange(cars_1997, hwy)
 
-
+View(cars_1997_hwy)
 # Mutate the 1997 cars data frame to add a column `average` that has the average
 # gas milage (between city and highway mpg) for each car
 
